@@ -4,12 +4,15 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Document</title>
+  <link rel="stylesheet" href="style.css">
 </head>
 <body>
   <nav>
     <div class="menuLogo">
-      <div class="logoIcon"><img src="img/icons/dashboard_FILL1_wght400_GRAD0_opsz48.svg"></div>
-      <div class="logoName">Dashboard</div>
+      <div class="menuEntries" id="logoEntry">
+        <div class="menuIcons" id="logoIcon"><img src="img/icons/dashboard_FILL1_wght400_GRAD0_opsz48.svg"></div>
+        <div class="menuSections" id="logoSection">Dashboard</div>
+      </div>
     </div>
     <div class="upperMenu">
       <div class="menuEntries">
@@ -47,34 +50,30 @@
         <div class="menuSections">Support</div>
       </div>
       <div class="menuEntries">
-        <div class="menuIcons"><img src="img/icons/settings_FILL1_wght400_GRAD0_opsz48.svg"></div>
+        <div class="menuIcons"><img src="img/icons/verified_user_FILL1_wght400_GRAD0_opsz48.svg"></div>
         <div class="menuSections">Privacy</div>
       </div>
     </div>
   </nav>
   <header>
-    <div class="upperPanel">
-      <div class="searchBar">
-        <img class="searchIcon" src="img/icons/search_FILL1_wght400_GRAD0_opsz48.svg" alt="">
-        <input type="text" class="searchInput"></input>
-      </div>
-      <div class="upperTop">
-        <img src="img/icons/notifications_FILL1_wght400_GRAD0_opsz48.svg" alt="" class="notificationIcon">
-        <img src="img/avatars/avatar_duck.png" alt="" class="avatarPreview">
-        <div class="username"></div>
-      </div>
+    <div class="searchBar">
+      <img class="searchIcon" src="img/icons/search_FILL1_wght400_GRAD0_opsz48.svg" alt="">
+      <input type="text" class="searchInput"></input>
     </div>
-    <div class="lowerPanel">
-      <div class="greetings">
-        <img src="img/avatars/avatar_duck.png" alt="" class="avatarLarge">
-        <div class="helloThere">Hello there,</div>
-        <div class="username">John Doe <span class="usernckname">@joedoe</span></div>
-      </div>
-      <div class="buttons">
-        <button>New</button>
-        <button>Upload</button>
-        <button>Share</button>
-      </div>
+    <div class="upperTopCorner">
+      <img src="img/icons/notifications_FILL1_wght400_GRAD0_opsz48.svg" alt="" class="notificationIcon">
+      <img src="img/avatars/avatar_duck.png" alt="" class="avatarPreview">
+      <div class="username">John Doe</div>
+    </div>
+    <div class="greetings">
+      <img src="img/avatars/avatar_duck.png" alt="" class="avatarPreviewLarge">
+      <div class="helloThere">Hello there,</div>
+      <div class="username">John Doe <span class="usernickname">@joedoe</span></div>
+    </div>
+    <div class="buttons">
+      <button>New</button>
+      <button>Upload</button>
+      <button>Share</button>
     </div>
   </header>
   <main>
