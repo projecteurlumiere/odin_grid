@@ -1,0 +1,371 @@
+/* TODO: sometimes html doesn't cover entire page  */
+/* TODO: review space inside cards (why does P allocates an entire new line?)
+possible solution: set borders, but a distinct border for the first child */
+/* TODO: make cards smaller so that they fit into one page? maybe? somehow?
+solution: make padding smaller, apparently */
+/* TODO: add padding right for main */
+
+/* root */
+
+:root {
+  --logo-icon-width: 40px;
+  --regular-icon-width: calc(var(--logo-icon-width) / 2);
+  --avatar-preview-width: var(--logo-icon-width);
+  --avatar-preview-large-width: calc(var(--avatar-preview-width) * 1.5);
+  --main-row-gap: 25px;
+  --h3-font-size: 1.25rem;
+  --projects-gap: 15px;
+  --header-max-height: 150px;
+  --nav-max-width: 200px;
+}
+
+* {
+  box-sizing: border-box;
+}
+
+html {
+  overflow: auto;
+}
+
+h1,
+h2,
+h3,
+h4,
+h5,
+h6,
+p,
+body {
+  margin: 0;
+}
+
+/* img sizes */
+
+.menuIcons > img,
+.searchIcon,
+.notificationIcon,
+.buttonFavorite,
+.buttonSeen,
+.buttonShare {
+  width: var(--regular-icon-width);
+}
+
+.avatarPreview {
+  width: var(--avatar-preview-width);
+}
+
+.avatarPreviewLarge {
+  width: var(--avatar-preview-large-width);
+}
+
+
+/* body layout */
+
+body {
+  display: grid;
+  align-content: start;
+  width: 100vw;
+  grid-template: var(--header-max-height) auto / var(--nav-max-width) auto;
+  grid-template-areas: 
+    "sidebar header"
+    "sidebar main";
+}
+
+nav {
+  box-sizing: border-box;
+  grid-area: sidebar;
+  min-height: 100vh;
+  padding-right: 50px;
+  padding-left: 10px;
+}
+
+nav,
+header {
+  padding-top: 15px;
+}
+
+header {
+  grid-area: header;
+  max-height: var(--header-max-height);
+  padding: 15px 30px;
+}
+
+main {
+  grid-area: main;
+  min-height: calc(100vh - var(--header-max-height));
+  min-width: calc(100vw - var(--nav-max-width));
+  justify-self: start;
+  align-self: start;
+  padding: var(--h3-font-size) 10px calc(var(--h3-font-size) * 2) 20px;
+}
+
+/* nav layout */
+
+nav {
+  display: grid;
+  align-items: start;
+  align-content: start;
+  row-gap: 50px;
+}
+
+nav > div {
+  display: grid;
+  row-gap: 2ch;
+  grid-template-columns: 1fr;
+}
+
+#logoSection {
+  font-weight: 800;
+  font-size: 1.25rem;
+}
+
+#logoIcon {
+  display: grid;
+  justify-self: start
+}
+
+#logoIcon > img {
+  width: var(--logo-icon-width);
+}
+
+.menuEntries {
+  display: grid;
+  grid-template-columns: var(--logo-icon-width) auto;
+  column-gap: 0.5ch;
+}
+
+.menuEntries,
+.menuIcons {
+  align-items: center;
+}
+
+.menuIcons {
+  display: grid;
+  justify-items: center;
+}
+
+/* header layout */
+
+header {
+  display: grid;
+  grid-template-rows: 40px auto;
+  grid-template-columns: 2fr 1fr;
+  column-gap: 30px;
+  row-gap: 15px;
+
+}
+
+.searchBar {
+  display: grid;
+  max-width: 500px;
+  grid-template-columns: var(--regular-icon-width) auto;
+  align-items: center;
+  column-gap: 10px;
+}
+
+.upperTopCorner {
+  display: grid;
+  grid-template-columns: var(--regular-icon-width) var(--avatar-preview-width) auto;
+  align-items: center;
+  justify-content: end;
+  column-gap: 10px;
+}
+
+.greetings {
+  display: grid;
+  justify-content: start;
+  gap: 0.5ch;
+  grid-template-areas: 
+  "avatarLarge helloThere"
+  "avatarLarge username";
+}
+
+.avatarPreviewLarge {
+  grid-area: avatarLarge;
+  align-self: center;
+}
+
+.helloThere,
+.greetings > .username {
+  text-align: left;
+}
+
+.helloThere {
+  grid-area: helloThere;
+  display: grid;
+  align-content: end;
+}
+
+.greetings > .username {
+  grid-area: username;
+}
+
+.buttons {
+  display: flex;
+  align-items: center;
+  justify-content: end;
+  column-gap: 20px;
+}
+
+.buttons > button {
+  max-width: 125px;
+  flex: 1;
+}
+
+/* layout main */
+
+main {
+  display: grid; 
+  grid-template-columns: auto minmax(220px, 300px);
+  grid-template-rows: auto auto auto auto;
+  grid-template-areas: 
+    "projectsTitle announcementsTitle"
+    "projects      announcements"
+    "projects      trendingTitle"
+    "projects      trending";
+  gap: var(--projects-gap);
+  padding: var(--projects-gap);
+  align-items: start;
+  align-content: start;
+}
+
+#projectsTitle,
+#announcementsTitle,
+#trendingTitle {
+  margin-bottom: calc(-1 * var(--projects-gap));
+}
+
+#projectsTitle {
+  grid-area: projectsTitle;
+  padding-left: var(--projects-gap);
+}
+
+#projectsTable {
+  grid-area: projects;
+}
+
+#announcementsTitle {
+  grid-area: announcementsTitle;
+}
+
+#announcementsTable {
+  grid-area: announcements;
+}
+
+#trendingTitle {
+  grid-area: trendingTitle;
+  align-self: end;
+  max-height: var(--h3-font-size);
+}
+
+#trendingList {
+  grid-area: trending;
+}
+
+#projectsTable > .projects,
+#announcementsTable,
+#trendingList {
+  padding: var(--projects-gap) var(--projects-gap);
+} 
+
+/* projects layout */
+
+#projectsTable {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(250px, 1fr));
+  gap: var(--projects-gap);
+}
+
+#projectsTable > .projects {
+  display: grid;
+  column-gap: var(--regular-icon-width);
+  grid-template-rows: auto fit-content var(--regular-icon-width);
+  grid-template-areas:
+  "title   title   title   title"
+  "content content content content"
+  ".       fav     seen    share";
+  padding: var(--projects-gap) var(--projects-gap);
+}
+
+.projects > .projectTitle {
+  grid-area: title;
+  justify-self: left;
+  align-self: end;
+  margin-bottom: 0.3ch;
+}
+
+.projects > .projectContent {
+  grid-area: content;
+  justify-self: left;
+  margin-bottom: 1ch;
+}
+
+.projects > .buttonFavorite {
+  grid-area: fav;
+}
+
+.projects > .buttonSeen {
+  grid-area: seen;
+}
+
+.projects > .buttonShare {
+  grid-area: share;
+}
+
+/* announcements layout */
+
+#announcementsTable {
+  display: grid;
+}
+
+.announcements {
+  display: grid;
+  row-gap: 0.5ch;
+  font-size: 0.8rem;
+  padding: 1em 0;
+  border-top: solid 1px gray;
+}
+
+.announcements:first-child {
+  border-top: none;
+}
+
+.announcements > .announcementTitles {
+  font-size: 1.2em;
+}
+
+/* trending layout */
+
+#trendingList {
+  display: grid;
+  align-content: start;
+  row-gap: 0.5ch;
+}
+
+#trendingList > .trendingProfiles {
+  display: grid;
+  max-height: var(--avatar-preview-width);
+  column-gap: 10px;
+  grid-template-columns: var(--avatar-preview-width) auto;
+  grid-template-areas: 
+    "avatar nickname"
+    "avatar project";
+  font-size: 0.8rem;
+}
+
+.trendingProfiles > .avatarPreview {
+  grid-area: avatar;
+  align-self: center;
+  justify-self: left;
+}
+
+.trendingProfiles > .trendingNickname {
+  grid-area: nickname;
+  align-self: end;
+  justify-self: start;
+  font-weight: 800;
+}
+
+.trendingProfiles > .trendingProject {
+  grid-area: project;
+  align-self: start;
+}
