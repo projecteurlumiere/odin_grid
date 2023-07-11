@@ -24,7 +24,8 @@ solution: make padding smaller, apparently */
 }
 
 html {
-  overflow: auto;
+  overflow-y: auto;
+  overflow-x: hidden;
 }
 
 h1,
