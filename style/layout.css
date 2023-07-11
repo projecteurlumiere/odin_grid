@@ -49,6 +49,11 @@ body {
   width: var(--regular-icon-width);
 }
 
+.avatarPreview,
+.avatarPreviewLarge {
+  border-radius: 50%;
+}
+
 .avatarPreview {
   width: var(--avatar-preview-width);
 }
@@ -224,7 +229,7 @@ main {
     "projects      trending"
     "projects      .";
   gap: var(--projects-gap);
-  padding: var(--projects-gap);
+  padding: calc(var(--projects-gap) * 2) calc(var(--projects-gap) * 2) var(--projects-gap) var(--projects-gap);
   align-items: start;
   align-content: start;
 }
@@ -232,7 +237,7 @@ main {
 #projectsTitle,
 #announcementsTitle,
 #trendingTitle {
-  margin-bottom: calc(-1 * var(--projects-gap));
+  margin-bottom: calc(-1 * var(--projects-gap) / 2);
 }
 
 #projectsTitle {

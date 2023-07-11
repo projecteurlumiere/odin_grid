@@ -1,0 +1,64 @@
+/* common */
+
+.avatarPreview,
+.avatarPreviewLarge {
+  background-color: rgb(224, 223, 223);
+}
+
+/* nav */
+
+* {
+  font-family: Roboto;
+
+}
+
+nav {
+  color: #ffffff;
+  background-color: #1992d4;
+}
+
+nav * img {
+  filter: invert(100%) sepia(0%) saturate(6475%) hue-rotate(345deg) brightness(111%) contrast(101%);
+}
+
+/* header */
+
+header {
+  position: relative;
+  box-shadow: 0 6px 5px -5px gray;
+}
+
+header * input {
+  background-color: #e2e8f0;
+  border-radius: 10px;
+  border: none;
+  outline: none;
+}
+
+header * button {
+  color: #ffffff;
+  background-color: #1992d4;
+  border-radius: 10px;
+  border: none;
+  outline: none;
+  padding: 0.5ch 2ch;
+  font-weight: 500;
+}
+
+/* main */
+
+main {
+  background-color: #e2e8f0;
+}
+
+.projects,
+#announcementsTable,
+#trendingList {
+  background-color: #ffffff;
+  border-radius: 10px;
+  box-shadow: 5px 5px 5px -5px gray;
+}
+
+.projects {
+  border-left: solid 7px #f0b429;
+}
