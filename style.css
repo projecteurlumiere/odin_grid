@@ -13,7 +13,9 @@ solution: make padding smaller, apparently */
   --avatar-preview-large-width: calc(var(--avatar-preview-width) * 1.5);
   --main-row-gap: 25px;
   --h3-font-size: 1.25rem;
-  --projects-gap: 25px;
+  --projects-gap: 15px;
+  --header-max-height: 150px;
+  --nav-max-width: 200px;
 }
 
 html {
@@ -55,14 +57,18 @@ body {
 
 body {
   display: grid;
-  grid-template: auto auto / auto auto;
+  min-height: 100vh;
+  align-content: start;
+  grid-template: var(--header-max-height) auto / var(--nav-max-width) auto;
   grid-template-areas: 
     "sidebar header"
     "sidebar main";
 }
 
 nav {
+  box-sizing: border-box;
   grid-area: sidebar;
+  min-height: 100vh;
   padding-right: 50px;
   padding-left: 10px;
 }
@@ -74,12 +80,16 @@ header {
 
 header {
   grid-area: header;
-  max-height: 145px;
+  max-height: var(--header-max-height);
   padding: 15px 30px;
 }
 
 main {
   grid-area: main;
+  min-height: calc(100vh - var(--header-max-height));
+  min-width: calc (100vw - var(--nav-max-width))
+  justify-self: start;
+  align-self: start;
   padding: var(--h3-font-size) 10px calc(var(--h3-font-size) * 2) 20px;
 }
 
@@ -141,6 +151,7 @@ header {
 
 .searchBar {
   display: grid;
+  max-width: 500px;
   grid-template-columns: var(--regular-icon-width) auto;
   align-items: center;
   column-gap: 10px;
@@ -157,7 +168,7 @@ header {
 .greetings {
   display: grid;
   justify-content: start;
-  row-gap: 0.5ch;
+  gap: 0.5ch;
   grid-template-areas: 
   "avatarLarge helloThere"
   "avatarLarge username";
@@ -184,26 +195,32 @@ header {
 }
 
 .buttons {
-  display: grid;
-  grid-template-columns: repeat(3, 1fr);
+  display: flex;
   align-items: center;
+  justify-content: end;
   column-gap: 20px;
+}
+
+.buttons > button {
+  max-width: 125px;
+  flex: 1;
 }
 
 /* layout main */
 
 main {
   display: grid; 
-  grid-template-columns: 3fr 1fr;
-  grid-template-rows: auto 1fr auto 1fr;
+  grid-template-columns: auto minmax(220px, 300px);
+  grid-template-rows: auto auto auto auto;
   grid-template-areas: 
     "projectsTitle announcementsTitle"
     "projects      announcements"
     "projects      trendingTitle"
-    "projects      trending"
-    "projects      .";
+    "projects      trending";
   gap: var(--projects-gap);
   padding: var(--projects-gap);
+  align-items: start;
+  align-content: start;
 }
 
 #projectsTitle,
@@ -231,6 +248,8 @@ main {
 
 #trendingTitle {
   grid-area: trendingTitle;
+  align-self: end;
+  max-height: var(--h3-font-size);
 }
 
 #trendingList {
@@ -247,7 +266,7 @@ main {
 
 #projectsTable {
   display: grid;
-  grid-template: repeat(3, 1fr) / 1fr 1fr;
+  grid-template-columns: repeat(auto-fill, minmax(250px, 1fr));
   gap: var(--projects-gap);
 }
 
@@ -266,11 +285,13 @@ main {
   grid-area: title;
   justify-self: left;
   align-self: end;
+  margin-bottom: 0.3ch;
 }
 
 .projects > .projectContent {
   grid-area: content;
   justify-self: left;
+  margin-bottom: 1ch;
 }
 
 .projects > .buttonFavorite {
@@ -311,11 +332,13 @@ main {
 
 #trendingList {
   display: grid;
-  row-gap: 1.5ch;
+  align-content: start;
+  row-gap: 0.5ch;
 }
 
 #trendingList > .trendingProfiles {
   display: grid;
+  max-height: var(--avatar-preview-width);
   column-gap: 10px;
   grid-template-columns: var(--avatar-preview-width) auto;
   grid-template-areas: 
