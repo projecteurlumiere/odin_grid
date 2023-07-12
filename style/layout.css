@@ -338,7 +338,7 @@ main {
 #trendingList {
   display: grid;
   align-content: start;
-  row-gap: 0.5ch;
+  row-gap: 1ch;
 }
 
 #trendingList > .trendingProfiles {

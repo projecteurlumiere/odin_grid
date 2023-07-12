@@ -152,6 +152,8 @@
 <script defer>
   const mobileDevice = window.matchMedia('(max-width: 725px)');
 
+  const menuLogo = document.querySelector('.menuLogo');
+
   const nav = document.querySelector('nav');
   const logoSection = document.querySelector('#logoSection');
   const menuEntries = document.querySelectorAll('.menuEntries');
@@ -159,6 +161,24 @@
   const elements = [nav, logoSection].concat(Array.from(menuEntries));
 
   let navHidden = true;
+
+  menuLogo.addEventListener('click', () => { 
+    if (mobileDevice.matches && navHidden == true) {
+      unhideNav(true);
+    }
+    else if (mobileDevice.matches && navHidden == false) {
+      unhideNav(false);
+    }
+  });
+
+  mobileDevice.addListener((e) => {
+    if (e.matches) {
+      unhideNav(false)
+    }
+    else {
+      unhideNav(true)
+    }
+  });
 
   function unhideNav(boolean){
     if (boolean == true) {
@@ -173,16 +193,7 @@
         navHidden = true;
       });
     }
-  }
-
-  nav.addEventListener('click', () => { 
-    if (mobileDevice.matches && navHidden == true) {
-      unhideNav(true);
-    }
-    else if (mobileDevice.matches && navHidden == false) {
-      unhideNav(false);
-    }
-  });
+  };
 
 </script>
 </html>
