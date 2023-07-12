@@ -1,10 +1,3 @@
-/* TODO: sometimes html doesn't cover entire page  */
-/* TODO: review space inside cards (why does P allocates an entire new line?)
-possible solution: set borders, but a distinct border for the first child */
-/* TODO: make cards smaller so that they fit into one page? maybe? somehow?
-solution: make padding smaller, apparently */
-/* TODO: add padding right for main */
-
 /* root */
 
 :root {
@@ -297,7 +290,7 @@ main {
   grid-area: title;
   justify-self: left;
   align-self: end;
-  margin-bottom: 0.3ch;
+  margin-bottom: 0.5ch;
 }
 
 .projects > .projectContent {

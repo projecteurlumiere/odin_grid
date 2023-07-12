@@ -1,16 +1,21 @@
 /* common */
 
+* {
+  font-family: Roboto;
+}
+
+.projectContent,
+.announcementTexts,
+.trendingProject {
+  font-weight: 300;
+}
+
 .avatarPreview,
 .avatarPreviewLarge {
   background-color: rgb(224, 223, 223);
 }
 
 /* nav */
-
-* {
-  font-family: Roboto;
-
-}
 
 nav {
   color: #ffffff;
