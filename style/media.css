@@ -1,4 +1,74 @@
-/* on 725px nav should disappear and be a symbol in the top left corner only */
-@media (min-width: 725px){
+@media (max-width: 725px){
+  body {
+    grid-template-columns: 60px auto;
+    grid-template-areas: 
+    "sidebar header"
+    "main    main";
+  }
 
+  nav {
+    position: static;
+    max-width: 60px;
+    min-height: 0;
+  }
+
+  #logoEntry {
+    display: inherit;
+
+  }
+
+  .menuEntries,
+  #logoSection {
+    display: none;
+  }
+
+  /* unhidden */
+
+  nav.unhidden {
+    position: fixed;
+    top: 0;
+    left: 0;
+    z-index: 2;
+    min-height: 100vh;
+    max-width: var(--nav-max-width);
+  }
+
+  .menuEntries.unhidden,
+  #logoSection.unhidden {
+    display: inherit;
+  }
+
+}
+
+@media (max-width: 600px) {
+  main {
+    grid-template-columns: 1fr;
+    grid-template-rows: auto;
+    grid-template-areas: 
+    "announcementsTitle"
+    "announcements"
+    "projectsTitle"
+    "projects"
+    "trendingTitle"
+    "trending";
+  }
+
+  .greetings {
+    display: none;
+  }
+
+  .searchInput {
+    display: none;
+  }
+  
+  .upperTopCorner {
+    grid-area: 1 / 2 / 2 / 3;
+    justify-content: end;
+  }
+
+  .buttons {
+    grid-area: 2 / 1 / 3 / 3;
+    justify-content: center;
+    column-gap: 10px;
+  }
 }

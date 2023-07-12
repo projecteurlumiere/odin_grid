@@ -149,4 +149,40 @@
     </div>
   </main>
 </body>
+<script defer>
+  const mobileDevice = window.matchMedia('(max-width: 725px)');
+
+  const nav = document.querySelector('nav');
+  const logoSection = document.querySelector('#logoSection');
+  const menuEntries = document.querySelectorAll('.menuEntries');
+
+  const elements = [nav, logoSection].concat(Array.from(menuEntries));
+
+  let navHidden = true;
+
+  function unhideNav(boolean){
+    if (boolean == true) {
+      elements.forEach(element => {
+        element.classList.add('unhidden');
+        navHidden = false;
+      });
+    }
+    else if (boolean == false) {
+      elements.forEach(element => {
+        element.classList.remove('unhidden');
+        navHidden = true;
+      });
+    }
+  }
+
+  nav.addEventListener('click', () => { 
+    if (mobileDevice.matches && navHidden == true) {
+      unhideNav(true);
+    }
+    else if (mobileDevice.matches && navHidden == false) {
+      unhideNav(false);
+    }
+  });
+
+</script>
 </html>
